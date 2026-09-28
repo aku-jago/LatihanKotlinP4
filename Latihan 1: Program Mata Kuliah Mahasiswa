@@ -1,0 +1,36 @@
+enum class CourseStatus {
+    ACTIVE, COMPLETED
+}
+
+data class Course (
+	val code: String,
+    val name: String,
+    val status: CourseStatus
+)
+
+fun Course.displayInfo(): String = "$code - $name - $status"
+
+fun main() {
+    val course = mutableListOf(
+    	Course("PAB01", "Pengembangan Aplikasi Bergerak", CourseStatus.ACTIVE),
+        Course("PGIM02", "Pengembangan GIM", CourseStatus.ACTIVE),
+        Course("BIKI03", "Bahasa Indonesia Untuk Komunikasi Ilmiah", CourseStatus.COMPLETED)
+        
+    )
+    
+    course.add(
+        Course("IUA04", "Islam Ulil Albab", CourseStatus.ACTIVE)
+    )
+    
+    course.removeAt(2)
+    
+    for (c in course) {
+        println(c.displayInfo())
+    }
+    
+    val (code, name, status) = course[0]
+    
+    println("Code: $code")
+    println("Name: $name")
+    println("Status: $status")
+}
