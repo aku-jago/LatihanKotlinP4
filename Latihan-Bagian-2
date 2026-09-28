@@ -1,0 +1,12 @@
+fun main() {
+    val cart = mutableListOf("Laptop", "Mouse")
+    cart.add("Keyboard")
+    cart.add("Headset")
+    cart.remove("Mouse")
+
+    for (product in cart) {
+        println(product)
+    }
+
+    println("Jumlah product: ${cart.size}")
+}
