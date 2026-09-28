@@ -1,0 +1,18 @@
+data class Product(
+    val name: String,
+    val price: Int
+)
+
+fun Product.isExpensive(): Boolean = price > 500000
+
+fun main() {
+    val ferrari = Product("Ferrari", 500000)
+    val porche = Product("Porche", 700000)
+    val ferrariNew = ferrari.copy(price = 100000)
+    
+    println(ferrari)
+    println(porche)
+    println(ferrariNew)
+    
+    println("Apakah mobil ini mahal? ${ferrari.isExpensive()}")
+}
