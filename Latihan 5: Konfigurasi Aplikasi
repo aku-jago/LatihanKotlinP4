@@ -1,0 +1,61 @@
+enum class CourseStatus {
+    ACTIVE,
+    COMPLETED
+}
+
+data class Course (
+    val code: String,
+    val name: String,
+    val status: CourseStatus
+) {
+    companion object {
+        const val PREFIX = "PAB"
+    }
+}
+
+object AppConfig {
+    const val MAX_COURSES = 5
+}
+
+fun MutableList<Course>.addCourse(course: Course): Boolean {
+    if (size < AppConfig.MAX_COURSES && course.code.startsWith(Course.PREFIX)) {
+        add(course)
+        return true
+    }
+    
+    return false
+}
+
+fun main() {
+    val courses = mutableListOf(
+    	Course(
+        	"PAB01",
+            "Pengembangan Aplikasi Bergerak",
+            CourseStatus.ACTIVE
+        ),
+        Course(
+        	"PAB02",
+            "Pengembangan GIM",
+            CourseStatus.ACTIVE
+        ),
+        Course(
+        	"PAB03",
+            "Bahasa Indonesia Untuk Komunikasi Ilmiah",
+            CourseStatus.COMPLETED
+        )
+    )
+    
+    val newCourse = Course(
+    	"PAB04",
+        "Islam Ulil Albab",
+        CourseStatus.ACTIVE
+    )
+    
+    val result = courses.addCourse(newCourse)
+    
+    println("Berhasil ditambahkan: $result")
+    
+    for (course in courses) {
+       println(course)
+    }
+}
