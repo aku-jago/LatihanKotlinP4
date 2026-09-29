@@ -1,0 +1,17 @@
+fun main() {
+    val scores = mutableMapOf<Int, Int>()
+
+    scores[24523199] = 85
+    scores[24523200] = 90
+    scores[24523201] = 78
+
+    scores[24523199] = 95
+
+    scores.remove(24523201)
+
+    for ((nim, score) in scores) {
+        println("NIM: $nim, Nilai: $score")
+    }
+
+    println("Nilai NIM 24523202: ${scores[24523202]}")
+}
