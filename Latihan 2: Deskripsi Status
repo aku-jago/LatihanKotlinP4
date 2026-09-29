@@ -1,0 +1,44 @@
+enum class CourseStatus {
+    ACTIVE, COMPLETED, DROPPED
+}
+
+data class Course (
+	val code: String,
+    val name: String,
+    val status: CourseStatus
+)
+
+fun Course.displayInfo(): String = "$code - $name - $status"
+
+fun describe(status: CourseStatus): String {
+    return when (status) {
+        CourseStatus.ACTIVE -> "Mata kuliah sedang aktif"
+        CourseStatus.COMPLETED -> "Mata kuliah sudah selesai"
+        CourseStatus.DROPPED -> "Mata kuliah dibatalkan"
+    }
+}
+
+fun main() {
+    val course = mutableListOf(
+    	Course("PAB01", "Pengembangan Aplikasi Bergerak", CourseStatus.ACTIVE),
+        Course("PGIM02", "Pengembangan GIM", CourseStatus.ACTIVE),
+        Course("BIKI03", "Bahasa Indonesia Untuk Komunikasi Ilmiah", CourseStatus.COMPLETED)
+        
+    )
+    
+    course.add(
+        Course("IUA04", "Islam Ulil Albab", CourseStatus.ACTIVE)
+    )
+    
+    course.removeAt(2)
+    
+    for (c in course) {
+        println("${c.displayInfo()} - ${describe(c.status)}")
+    }
+    
+    val (code, name, status) = course[0]
+    
+    println("Code: $code")
+    println("Name: $name")
+    println("Status: $status")
+}
